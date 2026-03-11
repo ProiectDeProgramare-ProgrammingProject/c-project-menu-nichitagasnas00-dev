@@ -1,21 +1,35 @@
 #include <stdio.h>
 #include <string.h>
 
+void display_help() {
+    printf("Available commands:\n");
+    printf("  main add\n");
+    printf("  main delete\n");
+    printf("  main search\n");
+    printf("  main list\n");
+    printf("  main help\n");
+}
+
 int main(int argc, char *argv[]) {
-    if (argc == 1) {
-        printf("available commands:help,start,settings\n");
+    if (argc < 2) {
+        display_help();
+        return 0;
     }
-    else if (strcmp(argv[1],"help")== 0 ){
-        printf("available commands: help,start,settings\n");
+
+    if (strcmp(argv[1], "help") == 0) {
+        display_help();
+        return 0;
     }
-    else if (strcmp(argv[1],"start")==0|| strcmp(argv[1],"settings")==0){
-        printf("option %s not implemented!\n",argv[1]);
-    }
+
+    if (strcmp(argv[1], "add") == 0 || 
+        strcmp(argv[1], "delete") == 0 || 
+        strcmp(argv[1], "search") == 0 || 
+        strcmp(argv[1], "list") == 0) {
+        printf("Option %s not implemented!\n", argv[1]);
+    } 
     else {
-        printf("missing option! to see all available commants, use help\n");
+        printf("Missing option! Too see all available commands, use help!\n");
     }
+
     return 0;
-    
-
-
 }
